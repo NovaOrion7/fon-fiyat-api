@@ -275,6 +275,10 @@ if __name__ == "__main__":
         if 'isPositive' not in f:
             f['isPositive'] = True
     
+    if len(tefas_funds) < 100:
+        print('HATA: TEFAS verisi eksik. funds.json bozulmamasi icin islem iptal ediliyor.')
+        exit(1)
+
     with open('funds.json', 'w', encoding='utf-8') as fp:
         json.dump(all_funds, fp, ensure_ascii=False, indent=2)
     
@@ -282,3 +286,4 @@ if __name__ == "__main__":
     print(f"  Toplam: {len(all_funds)} fon funds.json'a kaydedildi!")
     print(f"  TEFAS: {len(tefas_funds)} | ABD ETF: {len(etf_funds)}")
     print(f"{'=' * 60}")
+
